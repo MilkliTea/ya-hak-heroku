@@ -7,8 +7,6 @@ const telegram: Telegram = new Telegram(token);
 
 const bot: Telegraf<Context<Update>> = new Telegraf(token);
 
-const chatId: string = process.env.CHAT_ID as string;
-
 bot.start((ctx) => {
   ctx.reply('Hello ' + ctx.from.first_name + '!');
 });
@@ -30,10 +28,11 @@ bot.command('quit', (ctx) => {
 
 bot.on('text', (ctx) => {
   const text = ctx.message.text
+  const chatId = ctx.message.chat.id;
   if (text === 'hoşgeldin bilal' || text === 'Hoşgeldin bilal' || text === 'Hosgeldin bilal' || text === 'hosgeldin bilal') {
     telegram.sendMessage(
       chatId,
-      'Hoşbuldum. Yeni kitabımı okumayı unutmayın :)'
+      'Hoşbuldum. Kitabımı okumayı unutmayın :)'
     );
   }
   if (text === 'ya hak' || text === 'Ya hak'){

@@ -4,7 +4,6 @@ const telegraf_1 = require("telegraf");
 const token = process.env.BOT_TOKEN;
 const telegram = new telegraf_1.Telegram(token);
 const bot = new telegraf_1.Telegraf(token);
-const chatId = process.env.CHAT_ID;
 bot.start((ctx) => {
     ctx.reply('Hello ' + ctx.from.first_name + '!');
 });
@@ -21,8 +20,9 @@ bot.command('quit', (ctx) => {
 });
 bot.on('text', (ctx) => {
     const text = ctx.message.text;
+    const chatId = ctx.message.chat.id;
     if (text === 'hoşgeldin bilal' || text === 'Hoşgeldin bilal' || text === 'Hosgeldin bilal' || text === 'hosgeldin bilal') {
-        telegram.sendMessage(chatId, 'Hoşbuldum. Yeni kitabımı okumayı unutmayın :)');
+        telegram.sendMessage(chatId, 'Hoşbuldum. Kitabımı okumayı unutmayın :)');
     }
     if (text === 'ya hak' || text === 'Ya hak') {
         telegram.sendPhoto(chatId, { source: 'ya-hak.png' });
