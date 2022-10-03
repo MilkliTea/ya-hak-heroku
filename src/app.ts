@@ -32,9 +32,17 @@ bot.on('text', (ctx) => {
   if (text === 'hoşgeldin bilal' || text === 'Hoşgeldin bilal' || text === 'Hosgeldin bilal' || text === 'hosgeldin bilal') {
     telegram.sendMessage(
       chatId,
-      'Hoşbuldum. Kitabımı okumayı unutmayın :)'
+      'Hoşbuldum :)'
     );
   }
+
+  if (text === 'uzmanlık alanın neresi') {
+    telegram.sendMessage(
+      chatId,
+      'Uzmanlık alanım Avrupa'
+    );
+  }
+
   if (text === 'ya hak' || text === 'Ya hak'){
     telegram.sendPhoto(chatId, { source: 'ya-hak.png' });
   }
