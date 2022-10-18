@@ -28,24 +28,14 @@ bot.command('quit', (ctx) => {
 
 bot.on('text', (ctx) => {
   const text = ctx.message.text
-  const chatId = ctx.message.chat.id;
-  if (text === 'hoşgeldin bilal' || text === 'Hoşgeldin bilal' || text === 'Hosgeldin bilal' || text === 'hosgeldin bilal') {
-    telegram.sendMessage(
-      chatId,
-      'Hoşbuldum :)'
-    );
-  }
+  const chatId = ctx.message.chat.id; 
+  const isBot = ctx.message.from.is_bot;
 
-  if (text === 'uzmanlık alanın neresi') {
-    telegram.sendMessage(
-      chatId,
-      'Uzmanlık alanım Avrupa'
-    );
-  }
-
-  if (text === 'ya hak' || text === 'Ya hak'){
-    telegram.sendPhoto(chatId, { source: 'ya-hak.png' });
-  }
+    if (text.toLowerCase() === 'ya hak' && !isBot){
+        telegram.sendMessage(chatId, 'YA HAK');
+        telegram.sendVoice(chatId, { source: 'ses.mp3' });
+        telegram.sendPhoto(chatId, { source: 'ya-hak.png' });
+    }
 
 });
 
